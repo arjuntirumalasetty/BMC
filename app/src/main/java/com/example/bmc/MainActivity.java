@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,11 +16,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+
+import butterknife.Bind;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "On MainActiviy";
     private static String DEFAULT = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +70,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -81,32 +89,38 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        try {
+            Intent intent = null;
+            int id = item.getItemId();
+            if (id == R.id.nav_myProfile) {
+                intent = new Intent(this,ProfileActivity.class);
+                startActivity(intent);
+            } else if (id == R.id.nav_bookcourt) {
+                intent = new Intent(this, BookCourt.class);
+                startActivity(intent);
+            } else if (id == R.id.nav_earnings) {
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            } else if (id == R.id.nav_mySchedule) {
 
-        } else if (id == R.id.nav_slideshow) {
+            } else if (id == R.id.nav_help) {
 
-        } else if (id == R.id.nav_manage) {
+            } else if (id == R.id.nav_Event) {
 
-        } else if (id == R.id.nav_share) {
+            } else if (id == R.id.nav_logOut) {
+                SharedPreferences sharedPreferences = getSharedPreferences("loginData", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("UserName", DEFAULT);
+                editor.putString("Password", DEFAULT);
+                intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+            }
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer.closeDrawer(GravityCompat.START);
 
-        } else if (id == R.id.nav_Event) {
-
-        }else if(id == R.id.nav_logOut){
-            SharedPreferences sharedPreferences = getSharedPreferences("loginData", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("UserName",DEFAULT);
-            editor.putString("Password",DEFAULT);
-            Intent intent = new Intent(this,LoginActivity.class);
-            startActivity(intent);
+        } catch (Exception e) {
+            Log.e(TAG, "onNavigationItemSelected: ", e);
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }
+

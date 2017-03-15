@@ -17,4 +17,6 @@
         android:layout_height="match_parent"
         tools:context="com.example.bmc.MapsActivity" />
 
+
+
 </android.support.constraint.ConstraintLayout>

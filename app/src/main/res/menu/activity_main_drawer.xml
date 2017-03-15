@@ -3,19 +3,19 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_myProfile"
             android:icon="@drawable/myprofile_nav"
             android:title="My Profile" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_bookcourt"
             android:icon="@drawable/booking_court_icon"
             android:title="Book Court" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_earnings"
             android:icon="@drawable/my_earnings_icon"
             android:title="My earnings" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_mySchedule"
             android:icon="@drawable/clock_icon"
             android:title="Today Schedule" />
         <item
@@ -27,7 +27,7 @@
     <item android:title="Communicate">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/nav_help"
                 android:icon="@drawable/help_icon"
                 android:title="Help" />
             <item

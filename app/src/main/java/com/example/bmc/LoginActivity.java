@@ -2,7 +2,9 @@ package com.example.bmc;
 
 import android.app.ProgressDialog;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
+import android.support.transition.TransitionManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -44,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     private void callMainActivity() {
         Intent mainActivityIntern = new Intent(this,MainActivity.class);
         startActivity(mainActivityIntern);
+        overridePendingTransition(R.animator.activity_open_scale,R.animator.activity_close_translate);
     }
 
     public void login() {
@@ -55,11 +58,11 @@ public class LoginActivity extends AppCompatActivity {
 
         _loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+        /*final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.Theme_AppCompat_DayNight_DarkActionBar);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
-        progressDialog.show();
+        progressDialog.show();*/
 
 
         // TODO: Implement your own authentication logic here.
@@ -70,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                         // On complete call either onLoginSuccess or onLoginFailed
                         onLoginSuccess();
                         // onLoginFailed();
-                        progressDialog.dismiss();
+                       // progressDialog.dismiss();
                     }
                 }, 3000);
         callMainActivity();
