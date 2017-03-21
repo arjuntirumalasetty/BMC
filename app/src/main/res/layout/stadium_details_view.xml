@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ACACAC"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+       <!-- <customfonts.MyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="0.42"
+            android:padding="10dp"
+            android:text="Stadium Name"
+            android:textSize="14dp" />-->
+        <customfonts.MyTextView
+            android:id="@+id/stadium_details"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:background="#00000000"/>
+    </LinearLayout>
+    <!--<View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ACACAC"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <customfonts.MyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="0.42"
+            android:padding="10dp"
+            android:text="Sport Name"
+            android:textSize="14dp" />
+        <customfonts.MyTextView
+            android:id="@+id/sport_Name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:background="#00000000"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ACACAC"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <customfonts.MyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="0.42"
+            android:padding="10dp"
+            android:text="No.of Courts"
+            android:textSize="14dp" />
+        <customfonts.MyTextView
+            android:id="@+id/no_of_courts"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:background="#00000000"/>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#ACACAC"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <customfonts.MyTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="0.42"
+            android:padding="10dp"
+            android:text="Timings"
+            android:textSize="14dp" />
+
+        <customfonts.MyTextView
+            android:id="@+id/Timings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:inputType="text"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:background="#00000000">
+
+        </customfonts.MyTextView>
+    </LinearLayout>-->
+</LinearLayout>

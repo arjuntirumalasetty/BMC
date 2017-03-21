@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorControlNormal</item>
+        <item name="colorControlActivated">@color/colorControlActivated</item>
+        <item name="colorSwitchThumbNormal">@color/colorSwitchThumbNormal</item>
+    </style>
+
+    <array name="button_flat_color">
+        <item>@style/LightFlatColorButtonRippleStyle</item>
+        <item>@style/DarkFlatColorButtonRippleStyle</item>
+    </array>
+    <array name="button_raise_color">
+        <item>@style/LightRaiseColorButtonRippleStyle</item>
+        <item>@style/DarkRaiseColorButtonRippleStyle</item>
+    </array>
+</resources>
