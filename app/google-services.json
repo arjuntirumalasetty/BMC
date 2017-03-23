@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1084382199867",
+    "project_id": "firebase-bmcplay"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084382199867:android:5c730d84e1c823f7",
+        "android_client_info": {
+          "package_name": "com.example.bmc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084382199867-iibr3nbo1quj1dvtlks3l7tf19d5mf76.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bmc",
+            "certificate_hash": "c41d691fcc30d2cd6a69c1528188d596b6483311"
+          }
+        },
+        {
+          "client_id": "1084382199867-7a2844mvp1r9hpnqpf40bqj17th2r4nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD84AXIdifke7R_DSwU_VtKiNAbxmsZeS0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

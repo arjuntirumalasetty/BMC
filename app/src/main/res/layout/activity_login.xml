@@ -89,7 +89,7 @@
             android:textColor="@color/white"
             android:src="@drawable/twitter_login_logo"/>
 
-        <android.support.v7.widget.AppCompatImageButton
+        <com.google.android.gms.common.SignInButton
             android:id="@+id/btn_login_with_gmail"
             android:layout_width="48dp"
             android:layout_height="48dp"
