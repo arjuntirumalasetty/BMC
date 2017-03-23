@@ -44,13 +44,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void callMainActivity() {
+        Log.i(TAG, "Login====================");
+        new HttpRequestTask().execute();
+
         Intent mainActivityIntern = new Intent(this,MainActivity.class);
         startActivity(mainActivityIntern);
         overridePendingTransition(R.animator.activity_open_scale,R.animator.activity_close_translate);
     }
 
     public void login() {
-        Log.d(TAG, "Login");
+
         if (!validate()) {
             onLoginFailed();
             return;
