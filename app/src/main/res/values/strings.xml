@@ -30,4 +30,9 @@
     <string name="title_activity_book_court">BookCourt</string>
     <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_stadium_details_activiy">StadiumDetailsActiviy</string>
+    <string name="title_activity_stadium_detail_actvity">StadiumDetailActvity</string>
 </resources>
