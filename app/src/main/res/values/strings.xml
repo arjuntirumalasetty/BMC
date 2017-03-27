@@ -2,6 +2,12 @@
     <string name="app_name">BMC</string>
 
     <!-- Strings related to login -->
+    <string name="desc_app_icon">BMC Icon</string>
+    <string name="title_text">BMC Login</string>
+    <string name="signed_out">Signed out</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="disconnect">Disconnect</string>
+
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>

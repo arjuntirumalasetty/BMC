@@ -32,8 +32,8 @@ public class LoginActivity extends AppCompatActivity implements
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
     private TextView mStatusTextView;
-    @Bind(R.id.btn_login) Button _loginButton;
-    @Bind(R.id.input_phone)EditText phoneNumber;
+    //@Bind(R.id.btn_login) Button _loginButton;
+    //@Bind(R.id.input_phone)EditText phoneNumber;
     GoogleApiClient mGoogleApiClient;
     private static final int RC_SIGN_IN = 9001;
 
@@ -59,19 +59,19 @@ public class LoginActivity extends AppCompatActivity implements
 
         SignInButton signInButton = (SignInButton) findViewById(R.id.btn_login_with_gmail);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
-        _loginButton.setOnClickListener(new View.OnClickListener() {
+        /*_loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 login();
             }
-        });
+        });*/
 
     }
 
     private void callMainActivity() {
         Log.i(TAG, "Login====================");
-        new HttpRequestTask().execute();
+        //new HttpRequestTask().execute();
 
         Intent mainActivityIntern = new Intent(this,MainActivity.class);
         startActivity(mainActivityIntern);
@@ -83,25 +83,25 @@ public class LoginActivity extends AppCompatActivity implements
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
-    public void login() {
+    /*public void login() {
 
-        if (!validate()) {
+        *//*if (!validate()) {
             onLoginFailed();
             return;
-        }
+        }*//*
 
-        _loginButton.setEnabled(false);
+        //_loginButton.setEnabled(false);
 
-        /*final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+        *//*final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
                 R.style.Theme_AppCompat_DayNight_DarkActionBar);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
-        progressDialog.show();*/
+        progressDialog.show();*//*
 
 
         // TODO: Implement your own authentication logic here.
 
-        new android.os.Handler().postDelayed(
+        *//*new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
@@ -109,9 +109,9 @@ public class LoginActivity extends AppCompatActivity implements
                         // onLoginFailed();
                        // progressDialog.dismiss();
                     }
-                }, 3000);
-        callMainActivity();
-    }
+                }, 3000);*//*
+        //callMainActivity();
+    }*/
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
@@ -156,7 +156,7 @@ public class LoginActivity extends AppCompatActivity implements
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess() {
+    /*public void onLoginSuccess() {
         _loginButton.setEnabled(true);
         finish();
     }
@@ -174,7 +174,7 @@ public class LoginActivity extends AppCompatActivity implements
         }
 
         return valid;
-    }
+    }*/
 
     @Override
     public void onClick(View v) {
