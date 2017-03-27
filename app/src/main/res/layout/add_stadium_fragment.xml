@@ -1,27 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
     android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Add Stadium"
-        android:textColor="#90c40909"
-        android:textSize="22dp"
-        android:textStyle="bold" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/stadium_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
         <AutoCompleteTextView
             android:id="@+id/stadiumName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Stadium Name"
@@ -30,13 +20,13 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/sport_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
         <EditText
             android:id="@+id/sportName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Sport Name"
@@ -45,20 +35,24 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/court_count"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
         <EditText
             android:id="@+id/noOfCourts"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="No of Courts"
             android:inputType="text" />
 
     </android.support.design.widget.TextInputLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:orientation="horizontal">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,4 +61,16 @@
         android:text="Submit"
         android:textColor="#fff"
         android:id = "@+id/add_btn_submit"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#b45705"
+            android:layout_marginLeft="120dp"
+            android:text="Locate on Maps"
+            android:textColor="#fff"
+            android:id = "@+id/btn_tap_to_pin"/>
+
+    </LinearLayout>
+
 </LinearLayout>
