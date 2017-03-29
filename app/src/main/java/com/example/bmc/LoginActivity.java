@@ -26,9 +26,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import butterknife.ButterKnife;
 import butterknife.Bind;
 
-public class LoginActivity extends AppCompatActivity implements
-        GoogleApiClient.OnConnectionFailedListener,
-        View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
     private TextView mStatusTextView;
@@ -147,6 +145,7 @@ public class LoginActivity extends AppCompatActivity implements
         } else {
             // Signed out, show unauthenticated UI.
             //updateUI(false);
+            callMainActivity();
         }
     }
 

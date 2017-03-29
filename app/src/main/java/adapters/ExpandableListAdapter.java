@@ -83,7 +83,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             LayoutInflater infalInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.stadium_details,null);
         }
-        TextView textView = (TextView) convertView.findViewById(R.id.stadium_parent_name);
+        MyTextView textView = (MyTextView) convertView.findViewById(R.id.stadium_parent_name);
         textView.setText(stadiumName);
         //textView.setTextSize();
         Log.i("View details ",stadiumName);

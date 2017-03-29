@@ -5,72 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.bmc.ProfileActivity">
-
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <include layout="@layout/content_profile"/>
-
     <include layout="@layout/expandable_stadium_list"/>
 </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="220dp"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:src="@drawable/ic_action_delete"
-        android:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        android:id="@+id/fab_delete"
-        android:visibility="invisible"
-        />
-
-
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="160dp"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:src="@drawable/ic_action_update"
-        android:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        android:id="@+id/fab_update"
-        android:visibility="invisible"
-        />
-
-
-
-
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginRight="@dimen/fab_margin"
-        android:layout_marginBottom="100dp"
-        android:src="@drawable/ic_action_add_stadium"
-        android:elevation="6dp"
-        app:pressedTranslationZ="12dp"
-        android:id="@+id/fab_add"
-        android:visibility="invisible"
-        />
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,115 +1,121 @@
 package com.example.bmc;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Layout;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.PopupWindow;
 import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import businessojects.CoachDetails;
 import businessojects.StadiumDetails;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cache.UICache;
+import handlers.ProfileHandler;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements View.OnClickListener,View.OnFocusChangeListener{
 
     private static UICache uiCache = new UICache();
     private ExpandableListView expandableListView;
-    private List<StadiumDetails> stadiumList;
-     List<String> stadiumNames;
-    Map<String,List<String>> stadiumDetailsMap = null;
-    private StadiumDetails stadiumDetails;
     ExpandableListAdapter listAdapter;
     private Button addButton;
-    @Bind(R.id.fab_add)
-        FloatingActionButton fab_add;
-    @Bind(R.id.fab_update)
-        FloatingActionButton fab_update;
-    @Bind(R.id.fab_delete)
-        FloatingActionButton fab_delete;
     @Bind(R.id.fab_plus)
-        FloatingActionButton fab_plus;
-        android.widget.Button submitStadiumDetails;
-    CoordinatorLayout actvityProfile;
+    FloatingActionButton fab_plus;
+    android.widget.Button submitStadiumDetails;
     Animation fabOpen,fabClose,fabClockWise,fabAntiClockWise;
-    private android.widget.PopupWindow popupWindow;
-    boolean isFabOpen = false;
+    private boolean isFabOpen = false;
+    @Bind(R.id.coach_name)
+    EditText coachName;
+    @Bind(R.id.age)
+    EditText age;
+    @Bind(R.id.experience_years)
+    EditText experienceInYears;
+    @Bind(R.id.experience_months)
+    EditText experienceInMonths;
+    @Bind(R.id.coach_phone_no)
+    EditText coachPhoneNo;
+    @Bind(R.id.coach_email)
+    EditText coachEmail;
+    private CoachDetails coachDetails;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        stadiumList = new ArrayList<StadiumDetails>();
+        List<StadiumDetails> stadiumDetailsList = new ArrayList<StadiumDetails>();
         super.onCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setContentView(R.layout.activity_profile);
-        stadiumList.add(uiCache.getStadiumDetails());
+        stadiumDetailsList.add(uiCache.getStadiumDetails());
+        ProfileHandler.setStadiumList(stadiumDetailsList);
         expandableListView = (ExpandableListView)findViewById(R.id.stadium_list);
-        fillData();
-        listAdapter = new adapters.ExpandableListAdapter(this,stadiumNames,stadiumDetailsMap);
+        ProfileHandler.fillData();
+        listAdapter = new adapters.ExpandableListAdapter(this,ProfileHandler.getStadiumNames(),ProfileHandler.getStadiumDetailsMap());
         ButterKnife.bind(this);
         expandableListView.setAdapter(listAdapter);
         initialiseFabFloatingFunction();
+        enableProfileEditText(false);
+        fab_plus.setOnClickListener(this);
+        Button editButton = (Button) findViewById(R.id.profile_edit);
+        Button profileSaveButton = (Button) findViewById(R.id.coach_profile_save);
+        editButton.setOnClickListener(this);
+        profileSaveButton.setOnClickListener(this);
+        coachName.setOnFocusChangeListener(this);
+        age.setOnFocusChangeListener(this);
+        experienceInYears.setOnFocusChangeListener(this);
+        experienceInMonths.setOnFocusChangeListener(this);
+        coachPhoneNo.setOnFocusChangeListener(this);
+        coachEmail.setOnFocusChangeListener(this);;
+        Button profileSave = (Button)findViewById(R.id.coach_profile_save);
+        profileSave.setOnClickListener(this);
+    }
 
-        fab_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isFabOpen){
-                    fab_add.startAnimation(fabClose);
-                    fab_update.startAnimation(fabClose);
-                    fab_delete.startAnimation(fabClose);
-                    fab_plus.startAnimation(fabAntiClockWise);
-                    fab_add.setClickable(false);
-                    fab_update.setClickable(false);
-                    fab_delete.setClickable(false);
-                    isFabOpen = false;
-                }else{
-                    fab_add.startAnimation(fabOpen);
-                    fab_update.startAnimation(fabOpen);
-                    fab_delete.startAnimation(fabOpen);
-                    fab_plus.startAnimation(fabAntiClockWise);
-                    fab_add.setClickable(true);
-                    fab_update.setClickable(true);
-                    fab_delete.setClickable(true);
-                    isFabOpen = true;
-                }
-            }
-        });
+    private void enableProfileEditText(boolean enable) {
+        coachName.setEnabled(enable);
+        age.setEnabled(enable);
+        experienceInYears.setEnabled(enable);
+        experienceInMonths.setEnabled(enable);
+        coachPhoneNo.setEnabled(enable);
+        coachEmail.setEnabled(enable);
 
-        fab_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.fab_plus :
+                Log.i("Open Add","Button was clicked");
                 intiateAddPopupWindow();
-            }
-        });
-        if(submitStadiumDetails!= null) {
-            submitStadiumDetails.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    updateStadiumDetails();
-                }
-            });
+                break;
+            case R.id.profile_edit:
+                enableProfileEditText(true);
+                break;
+            case R.id.coach_profile_save :
+                createprofileDetails();
+                ProfileHandler.persistProfileDetails(coachDetails);
+                break;
         }
+
+    }
+
+    private void createprofileDetails() {
+        CoachDetails coachDetails = new CoachDetails();
+        coachDetails.setCoachName(coachName.getText().toString());
+        coachDetails.setAge(Integer.parseInt(age.getText().toString()));
+        coachDetails.setExperienceInYears(Integer.parseInt(experienceInYears.getText().toString()));
+        coachDetails.setExperienceInMonths(Integer.parseInt(experienceInMonths.getText().toString()));
+        coachDetails.setCoachPhoneNo(coachPhoneNo.getText().toString());
+        coachDetails.setCoachEmail(coachEmail.getText().toString());
+        coachDetails = this.coachDetails;
     }
 
     private void updateStadiumDetails() {
@@ -139,26 +145,50 @@ public class ProfileActivity extends AppCompatActivity {
         Intent stadiumDetailsIntent = new Intent(this,StadiumDetailActivity.class);
         startActivity(stadiumDetailsIntent);
         overridePendingTransition(R.animator.activity_open_scale,R.animator.activity_close_translate);
-       /* LayoutInflater inflater = (LayoutInflater) ProfileActivity.this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.add_popup, (ViewGroup) findViewById(R.id.add_popup));
-        popupWindow = new PopupWindow(layout,ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT,true);
-        popupWindow.showAtLocation(layout, Gravity.CENTER,0,0);*/
-        
     }
 
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        try{
 
-    private Map<String,List<String>> fillData(){
-        stadiumNames = new ArrayList<String>();
-        List<String> stadiumDetailsList= null;
-        stadiumDetailsMap = new HashMap<String,List<String>>();
-            stadiumDetailsList= new ArrayList<String>();
-        stadiumDetails = stadiumList.get(0);
-            stadiumNames.add(stadiumDetails.getStadiumName());
-            stadiumDetailsList.add(stadiumDetails.getStadiumName());
-            stadiumDetailsList.add(stadiumDetails.getNumberOfCourts());
-            stadiumDetailsList.add(stadiumDetails.getSportName());
-           stadiumDetailsList.add(stadiumDetails.getTimings());
-            stadiumDetailsMap.put(stadiumDetails.getStadiumName(),stadiumDetailsList);
-        return stadiumDetailsMap;
+            switch (v.getId()) {
+                case R.id.coach_name:
+                    if (hasFocus) {
+                        if (coachName.getText().length() <= 0) {
+                            coachName.setError("Coach Name should not blank");
+                        }
+                    }
+                case R.id.coach_phone_no:
+                    if (hasFocus) {
+                        if (null == coachPhoneNo.getText().toString() || "" == coachPhoneNo.getText().toString()) {
+                            coachPhoneNo.setError("Phone no should not blank");
+                        }
+                    }
+                case R.id.experience_months:
+                    if (hasFocus) {
+                        if (null == coachPhoneNo.getText().toString() || "" == coachPhoneNo.getText().toString()) {
+                            coachPhoneNo.setError("No of months should not blank");
+                        }
+                    }
+                case R.id.experience_years:
+                    if (hasFocus) {
+                        if (null == experienceInYears.getText().toString() || "" == experienceInYears.getText().toString()) {
+                            experienceInYears.setError("No of years should not blank");
+                        }
+                    }
+                case R.id.coach_email:
+                    if (hasFocus) {
+                        if (null == coachEmail.getText().toString() || "" == coachEmail.getText().toString()) {
+                            coachEmail.setError("Email should not blank");
+                        }
+                        if(null != coachEmail.getText().toString() && !coachEmail.getText().toString().contains("@") || !(coachEmail.getText().toString().contains(".com")||coachEmail.getText().toString().contains(".COM")) ){
+                            coachEmail.setError("Email is incorrect");
+                        }
+                    }
+            }
+        }catch(Exception e){
+            Log.e("profile validator",e.getStackTrace().toString());
+        }
     }
 }
+
