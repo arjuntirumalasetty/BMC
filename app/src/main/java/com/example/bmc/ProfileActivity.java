@@ -158,12 +158,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             coachName.setError("Coach Name should not blank");
                         }
                     }
+                    break;
                 case R.id.coach_phone_no:
                     if (hasFocus) {
                         if (null == coachPhoneNo.getText().toString() || "" == coachPhoneNo.getText().toString()) {
                             coachPhoneNo.setError("Phone no should not blank");
                         }
                     }
+                    break;
                 case R.id.experience_months:
                     if (hasFocus) {
                         if (null == coachPhoneNo.getText().toString() || "" == coachPhoneNo.getText().toString()) {
@@ -176,6 +178,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             experienceInYears.setError("No of years should not blank");
                         }
                     }
+                    break;
                 case R.id.coach_email:
                     if (hasFocus) {
                         if (null == coachEmail.getText().toString() || "" == coachEmail.getText().toString()) {
@@ -185,6 +188,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                             coachEmail.setError("Email is incorrect");
                         }
                     }
+                    break;
             }
         }catch(Exception e){
             Log.e("profile validator",e.getStackTrace().toString());
