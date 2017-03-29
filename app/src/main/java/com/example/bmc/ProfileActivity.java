@@ -142,7 +142,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void intiateAddPopupWindow() {
-        Intent stadiumDetailsIntent = new Intent(this,StadiumDetailActivity.class);
+        Intent stadiumDetailsIntent = new Intent(this,AddStadiumActivity.class);
         startActivity(stadiumDetailsIntent);
         overridePendingTransition(R.animator.activity_open_scale,R.animator.activity_close_translate);
     }
