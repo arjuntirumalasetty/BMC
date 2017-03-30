@@ -57,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         List<StadiumDetails> stadiumDetailsList = new ArrayList<StadiumDetails>();
         super.onCreate(savedInstanceState);
-        GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+        globalVariable = (GlobalClass) getApplicationContext();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setContentView(R.layout.activity_profile);
@@ -147,9 +147,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void initiateAddPopupWindow() {
-        Intent stadiumDetailsIntent = new Intent(this, StadiumDetailActivity.class);
+        /*Intent stadiumDetailsIntent = new Intent(this, StadiumDetailActivity.class);
         startActivity(stadiumDetailsIntent);
-        overridePendingTransition(R.animator.activity_open_scale, R.animator.activity_close_translate);
+        overridePendingTransition(R.animator.activity_open_scale, R.animator.activity_close_translate);*/
     }
 
     @Override
