@@ -27,6 +27,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="loading">Loading…</string>
     <string name="title_activity_maps">Map</string>
     <string name="title_activity_sport">SportActivity</string>
     <string name="PLACES_API_BASE">https://maps.googleapis.com/maps/api/place</string>

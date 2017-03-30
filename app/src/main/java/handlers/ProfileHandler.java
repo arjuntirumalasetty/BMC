@@ -1,10 +1,6 @@
 package handlers;
 
-import android.os.AsyncTask;
-import android.util.Log;
-
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
+import com.example.bmc.globalvariable.GlobalClass;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +9,7 @@ import java.util.Map;
 
 import businessojects.CoachDetails;
 import businessojects.StadiumDetails;
+import restEndPoints.RestCoachHandler;
 
 /**
  * Created by Arjun on 3/28/2017.
@@ -67,12 +64,8 @@ public class ProfileHandler {
 /*
  * This method is used to call the service to persist the coachDetails
  */
-    public static void persistProfileDetails(CoachDetails coachDetails) {
-
-     /*   HttpRequestTask httpRequestTast = new HttpRequestTask();
-        httpRequestTast.setCoachDetails(coachDetails);
-        httpRequestTast.execute();
-*/
-
+    public static void persistProfileDetails(CoachDetails coachDetails, GlobalClass globalVariable) {
+        globalVariable.getCoach().setCoachDetails(coachDetails);
+        RestCoachHandler.getInstance().updateCoachDetails(globalVariable.getCoach());
     }
 }

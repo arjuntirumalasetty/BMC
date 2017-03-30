@@ -12,8 +12,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+
+import com.example.bmc.globalvariable.GlobalClass;
 import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +27,7 @@ import butterknife.ButterKnife;
 import cache.UICache;
 import handlers.ProfileHandler;
 
-public class ProfileActivity extends AppCompatActivity implements View.OnClickListener,View.OnFocusChangeListener{
+public class ProfileActivity extends AppCompatActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
     private static UICache uiCache = new UICache();
     private ExpandableListView expandableListView;
@@ -33,7 +36,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     @Bind(R.id.fab_plus)
     FloatingActionButton fab_plus;
     android.widget.Button submitStadiumDetails;
-    Animation fabOpen,fabClose,fabClockWise,fabAntiClockWise;
+    Animation fabOpen, fabClose, fabClockWise, fabAntiClockWise;
     private boolean isFabOpen = false;
     @Bind(R.id.coach_name)
     EditText coachName;
@@ -48,18 +51,21 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     @Bind(R.id.coach_email)
     EditText coachEmail;
     private CoachDetails coachDetails;
+    GlobalClass globalVariable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         List<StadiumDetails> stadiumDetailsList = new ArrayList<StadiumDetails>();
         super.onCreate(savedInstanceState);
+        globalVariable = (GlobalClass) getApplicationContext();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setContentView(R.layout.activity_profile);
         stadiumDetailsList.add(uiCache.getStadiumDetails());
         ProfileHandler.setStadiumList(stadiumDetailsList);
-        expandableListView = (ExpandableListView)findViewById(R.id.stadium_list);
+        expandableListView = (ExpandableListView) findViewById(R.id.stadium_list);
         ProfileHandler.fillData();
-        listAdapter = new adapters.ExpandableListAdapter(this,ProfileHandler.getStadiumNames(),ProfileHandler.getStadiumDetailsMap());
+        listAdapter = new adapters.ExpandableListAdapter(this, ProfileHandler.getStadiumNames(), ProfileHandler.getStadiumDetailsMap());
         ButterKnife.bind(this);
         expandableListView.setAdapter(listAdapter);
         initialiseFabFloatingFunction();
@@ -74,8 +80,9 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         experienceInYears.setOnFocusChangeListener(this);
         experienceInMonths.setOnFocusChangeListener(this);
         coachPhoneNo.setOnFocusChangeListener(this);
-        coachEmail.setOnFocusChangeListener(this);;
-        Button profileSave = (Button)findViewById(R.id.coach_profile_save);
+        coachEmail.setOnFocusChangeListener(this);
+        ;
+        Button profileSave = (Button) findViewById(R.id.coach_profile_save);
         profileSave.setOnClickListener(this);
     }
 
@@ -91,23 +98,23 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.fab_plus :
-                Log.i("Open Add","Button was clicked");
-                intiateAddPopupWindow();
+        switch (v.getId()) {
+            case R.id.fab_plus:
+                Log.i("Open Add", "Button was clicked");
+                initiateAddPopupWindow();
                 break;
             case R.id.profile_edit:
                 enableProfileEditText(true);
                 break;
-            case R.id.coach_profile_save :
-                createprofileDetails();
-                ProfileHandler.persistProfileDetails(coachDetails);
+            case R.id.coach_profile_save:
+                createProfileDetails();
+                ProfileHandler.persistProfileDetails(coachDetails, globalVariable);
                 break;
         }
 
     }
 
-    private void createprofileDetails() {
+    private void createProfileDetails() {
         CoachDetails coachDetails = new CoachDetails();
         coachDetails.setCoachName(coachName.getText().toString());
         coachDetails.setAge(Integer.parseInt(age.getText().toString()));
@@ -119,37 +126,35 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     private void updateStadiumDetails() {
-        try{
+        try {
             TextView stadiumName = (TextView) findViewById(R.id.stadiumName);
             TextView noOfCourts = (TextView) findViewById(R.id.noOfCourts);
-            TextView sportName =(TextView) findViewById(R.id.sportName);
+            TextView sportName = (TextView) findViewById(R.id.sportName);
             StadiumDetails sd = new StadiumDetails();
             sd.setStadiumName(stadiumName.getText().toString());
             sd.setSportName(sportName.getText().toString());
             sd.setNumberOfCourts(noOfCourts.getText().toString());
-        }catch(Exception e){
+        } catch (Exception e) {
 
         }
     }
 
     private void initialiseFabFloatingFunction() {
-
-        fabOpen = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_open);
-        fabClose = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
-        fabClockWise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_rotate_clock_wise);
-        fabAntiClockWise = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_rotate_anticlock_wise);
-
+        fabOpen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
+        fabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
+        fabClockWise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_clock_wise);
+        fabAntiClockWise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_anticlock_wise);
     }
 
-    private void intiateAddPopupWindow() {
-        Intent stadiumDetailsIntent = new Intent(this,AddStadiumActivity.class);
+    private void initiateAddPopupWindow() {
+        /*Intent stadiumDetailsIntent = new Intent(this, StadiumDetailActivity.class);
         startActivity(stadiumDetailsIntent);
-        overridePendingTransition(R.animator.activity_open_scale,R.animator.activity_close_translate);
+        overridePendingTransition(R.animator.activity_open_scale, R.animator.activity_close_translate);*/
     }
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
-        try{
+        try {
 
             switch (v.getId()) {
                 case R.id.coach_name:
@@ -184,14 +189,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                         if (null == coachEmail.getText().toString() || "" == coachEmail.getText().toString()) {
                             coachEmail.setError("Email should not blank");
                         }
-                        if(null != coachEmail.getText().toString() && !coachEmail.getText().toString().contains("@") || !(coachEmail.getText().toString().contains(".com")||coachEmail.getText().toString().contains(".COM")) ){
+                        if (null != coachEmail.getText().toString() && !coachEmail.getText().toString().contains("@") || !(coachEmail.getText().toString().contains(".com") || coachEmail.getText().toString().contains(".COM"))) {
                             coachEmail.setError("Email is incorrect");
                         }
                     }
                     break;
             }
-        }catch(Exception e){
-            Log.e("profile validator",e.getStackTrace().toString());
+        } catch (Exception e) {
+            Log.e("profile validator", e.getStackTrace().toString());
         }
     }
 }

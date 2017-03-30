@@ -24,7 +24,7 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = "On MainActiviy";
+    private static final String TAG = "On MainActivity";
     private static String DEFAULT = "";
 
     @Override
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         try {
+
             Intent intent = null;
             int id = item.getItemId();
             if (id == R.id.nav_myProfile) {
