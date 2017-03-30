@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import fragments.AddStadiumFragment;
 import fragments.UpdateStadiumFragment;
 
 /**
@@ -21,7 +20,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new AddStadiumFragment();
+           //     return new AddStadiumFragment();
             case 1:
                 return new UpdateStadiumFragment();
             default:break;

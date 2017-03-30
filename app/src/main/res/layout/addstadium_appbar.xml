@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.alexzh.circleimageview.CircleImageView
+        android:id="@+id/banar1"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@drawable/jaydeep"
+        app:view_shadowRadius="2dp"
+        app:view_shadowDx="2dp"
+        app:view_shadowDy="0dp"
+        app:view_borderWidth="2dp"
+        app:view_borderColor="#cccccc"
+        />
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|top"
+                android:gravity="top"
+                android:textSize="30px"
+                android:text="Arjun"
+                android:textColor="@color/iron"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left|bottom"
+                android:gravity="left"
+                android:textSize="30px"
+                android:text="xyz abc"
+                android:textColor="@color/iron"
+                />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            android:gravity="left"
+            android:textSize="80px"
+            android:text="Add Stadium"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/iron"
+            />
+    </LinearLayout>
+</GridLayout>

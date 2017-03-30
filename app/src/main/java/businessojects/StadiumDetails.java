@@ -9,9 +9,26 @@ import android.location.Address;
 public class StadiumDetails {
     private String stadiumName;
     private String sportName;
-    private String timings;
+    private Timings individualTimings;
+    private Timings groupTimings;
     private String numberOfCourts;
     private Address address;
+
+    public Timings getIndividualTimings() {
+        return individualTimings;
+    }
+
+    public void setIndividualTimings(Timings individualTimings) {
+        this.individualTimings = individualTimings;
+    }
+
+    public Timings getGroupTimings() {
+        return groupTimings;
+    }
+
+    public void setGroupTimings(Timings groupTimings) {
+        this.groupTimings = groupTimings;
+    }
 
     public String getSportName() {
         return sportName;
@@ -37,15 +54,7 @@ public class StadiumDetails {
         this.numberOfCourts = numberOfCourts;
     }
 
-    public String getTimings() {
-        return timings;
-    }
-
-    public void setTimings(String timings) {
-        this.timings = timings;
-    }
-
-    public String getStadiumName() {
+     public String getStadiumName() {
         return stadiumName;
     }
 

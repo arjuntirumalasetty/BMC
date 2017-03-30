@@ -16,7 +16,7 @@ public class UICache {
         stadiumDetails.setStadiumName("Balewadi Stadium");
         stadiumDetails.setSportName("Tennis");
         stadiumDetails.setNumberOfCourts("3");
-        stadiumDetails.setTimings("6:00 to 9:00");
+     //   stadiumDetails.setTimings("6:00 to 9:00");
         stadiumDetails.setAddress(getAddress());
         return stadiumDetails;
     }
