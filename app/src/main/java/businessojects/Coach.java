@@ -11,6 +11,9 @@ public class Coach {
 
     private String id;
     private CoachDetails coachDetails;
+    private String loginEmail;
+    private String loginNumber;
+    private String googleDisplayName;
 
     public String getId() {
         return id;
@@ -20,11 +23,35 @@ public class Coach {
         this.id = id;
     }
 
+    public String getLoginEmail() {
+        return loginEmail;
+    }
+
+    public void setLoginEmail(String loginEmail) {
+        this.loginEmail = loginEmail;
+    }
+
+    public String getLoginNumber() {
+        return loginNumber;
+    }
+
+    public void setLoginNumber(String loginNumber) {
+        this.loginNumber = loginNumber;
+    }
+
     public CoachDetails getCoachDetails() {
         return coachDetails;
     }
 
     public void setCoachDetails(CoachDetails coachDetails) {
         this.coachDetails = coachDetails;
+    }
+
+    public String getGoogleDisplayName() {
+        return googleDisplayName;
+    }
+
+    public void setGoogleDisplayName(String googleDisplayName) {
+        this.googleDisplayName = googleDisplayName;
     }
 }
