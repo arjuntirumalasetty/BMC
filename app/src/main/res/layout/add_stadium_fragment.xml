@@ -4,18 +4,35 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.TextInputLayout
+        android:id="@+id/stadium_named"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <EditText
+            android:id="@+id/stadiumNames"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Stadium Names"
+            android:inputType="text"
+            android:paddingBottom="10dp"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
         android:id="@+id/stadium_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/stadiumName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="Stadium Name"
-            android:inputType="text" />
+            android:inputType="text"
+            android:paddingBottom="10dp"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -32,7 +49,6 @@
             android:hint="Sport Name"
             android:inputType="text" />
     </android.support.design.widget.TextInputLayout>
-
     <android.support.design.widget.TextInputLayout
         android:id="@+id/court_count"
         android:layout_width="match_parent"
@@ -46,8 +62,39 @@
             android:ems="10"
             android:hint="No of Courts"
             android:inputType="text" />
-
     </android.support.design.widget.TextInputLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Individual Booking timmings"/>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/individual_timmings_from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <EditText
+            android:id="@+id/individualtimmingsfrom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="from"
+            android:inputType="time" />
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/individual_timmings_to"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+        <EditText
+            android:id="@+id/individualtimmingsto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="to"
+            android:onClick="showTimePickerDaialog"
+            android:inputType="time" />
+    </android.support.design.widget.TextInputLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

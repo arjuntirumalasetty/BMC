@@ -37,5 +37,6 @@ public class AddStadiumFragment extends Fragment {
 
         return view;
     }
+
     
 }
