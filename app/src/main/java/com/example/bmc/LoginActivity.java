@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         ButterKnife.bind(this);
 
         findViewById(R.id.btn_login_with_gmail).setOnClickListener(this);
+        //findViewById(R.id.nav_logOut).setOnClickListener(this);
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -85,6 +86,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                     @Override
                     public void onResult(Status status) {
                         // [START_EXCLUDE]
+                        Log.i("a","Going to update UI to false>>>>>>>>>..");
                         updateUI(false, null);
                         // [END_EXCLUDE]
                     }
@@ -100,7 +102,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.e("requestCode", "requestCode>>>>>>>>>>>>>>>>>."+requestCode);
+        Log.i("requestCode", "requestCode>>>>>>>>>>>>>>>>>."+requestCode);
         if (requestCode == REQUEST_SIGNUP) {
             if (resultCode == RESULT_OK) {
 
@@ -122,24 +124,32 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         super.onStart();
 
         OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(mGoogleApiClient);
-        if (opr.isDone()) {
-            // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
-            // and the GoogleSignInResult will be available instantly.
-            Log.d(TAG, "Got cached sign-in");
-            GoogleSignInResult result = opr.get();
-            handleSignInResult(result);
+        final GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+        if(globalVariable != null && "LogOut".equals(globalVariable.getLogout())) {
+            globalVariable.setLogout("");
+            //signOut();
+
         } else {
-            // If the user has not previously signed in on this device or the sign-in has expired,
-            // this asynchronous branch will attempt to sign in the user silently.  Cross-device
-            // single sign-on will occur in this branch.
-            showProgressDialog();
-            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
-                @Override
-                public void onResult(GoogleSignInResult googleSignInResult) {
-                    hideProgressDialog();
-                    handleSignInResult(googleSignInResult);
-                }
-            });
+            if (opr.isDone()) {
+                // If the user's cached credentials are valid, the OptionalPendingResult will be "done"
+                // and the GoogleSignInResult will be available instantly.
+                Log.i(TAG, "Got cached sign-in>>>>>>>>");
+                GoogleSignInResult result = opr.get();
+                handleSignInResult(result);
+            } else {
+                // If the user has not previously signed in on this device or the sign-in has expired,
+                // this asynchronous branch will attempt to sign in the user silently.  Cross-device
+                // single sign-on will occur in this branch.
+                Log.i("dd","In cross device sign in>>>>>>>>>>>>");
+                showProgressDialog();
+                opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+                    @Override
+                    public void onResult(GoogleSignInResult googleSignInResult) {
+                        hideProgressDialog();
+                        handleSignInResult(googleSignInResult);
+                    }
+                });
+            }
         }
     }
 
@@ -160,7 +170,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void handleSignInResult(GoogleSignInResult result) {
-        Log.d(TAG, "handleSignInResult:" + result.isSuccess());
+        Log.i(TAG, "handleSignInResult>>>>>>>:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
@@ -188,9 +198,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             globalVariable.setCoach(existingCoach);
             globalVariable.setLoginEmail(existingCoach.getLoginEmail());
             globalVariable.setGoogleProfileName(existingCoach.getGoogleDisplayName());
-
-        } else {
             callMainActivity();
+        } else {
+
             //mStatusTextView.setText(R.string.signed_out);
 /*
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
@@ -210,7 +220,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             case R.id.btn_login_with_gmail:
                 signIn();
                 break;
-            case R.id.sign_out_button:
+            case R.id.nav_logOut:
+                Log.i("Sign out", ">>>>>Is it really coming here");
                 signOut();
                 break;
         }

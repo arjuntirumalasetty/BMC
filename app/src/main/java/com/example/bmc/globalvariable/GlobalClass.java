@@ -10,6 +10,7 @@ public class GlobalClass extends Application {
     private String loginNumber;
     private String googleProfileName;
     private Coach coach;
+    private String logout;
 
     public String getLoginEmail() {
         return loginEmail;
@@ -41,5 +42,13 @@ public class GlobalClass extends Application {
 
     public void setCoach(Coach coach) {
         this.coach = coach;
+    }
+
+    public String getLogout() {
+        return logout;
+    }
+
+    public void setLogout(String logout) {
+        this.logout = logout;
     }
 }

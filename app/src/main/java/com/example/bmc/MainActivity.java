@@ -18,6 +18,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.example.bmc.globalvariable.GlobalClass;
+
 import butterknife.Bind;
 import butterknife.OnClick;
 
@@ -112,6 +114,9 @@ public class MainActivity extends AppCompatActivity
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("UserName", DEFAULT);
                 editor.putString("Password", DEFAULT);
+                editor.putBoolean("isSignOut", true);
+                GlobalClass globalVariable = (GlobalClass) getApplicationContext();
+                globalVariable.setLogout("LogOut");
                 intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
             }
