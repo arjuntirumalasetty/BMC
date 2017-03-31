@@ -32,7 +32,7 @@
             android:layout_marginTop="10dp"
             android:textColorHint="@color/editTextColor"
             android:backgroundTint="@color/editTextColor">
-            <customfonts.MyEditText
+            <EditText
                 android:id="@+id/stadiumName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
