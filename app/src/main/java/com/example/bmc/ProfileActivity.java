@@ -146,12 +146,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         fabAntiClockWise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_anticlock_wise);
     }
 
-    private void initiateAddPopupWindow() {
-        /*Intent stadiumDetailsIntent = new Intent(this, StadiumDetailActivity.class);
-        startActivity(stadiumDetailsIntent);
-        overridePendingTransition(R.animator.activity_open_scale, R.animator.activity_close_translate);*/
-    }
-
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
         try {

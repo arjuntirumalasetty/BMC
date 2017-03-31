@@ -111,14 +111,7 @@ public class AddStadiumActivity extends AppCompatActivity implements TimePickerD
     }
 
     private boolean finalValidate() {
-        if(null != stadiumn.getEditText().getText().toString() && !"".equals(stadiumn.getEditText().getText().toString()))
-        {
-            stadiumName.setError("stadium name should not blank");
-            return false;
-        }else{
-            Log.i("Stadium Name ",stadiumn.getEditText().getText().toString());
-        }
-            if(null != stadiumName.getText() && !"".equals(stadiumName.getText())) {
+        if(null != stadiumName.getText() && !"".equals(stadiumName.getText())) {
                 stadiumName.setError("stadium name should not blank");
                 return false;
             }if(null != sportName.getText() && !"".equals(sportName.getText())) {
