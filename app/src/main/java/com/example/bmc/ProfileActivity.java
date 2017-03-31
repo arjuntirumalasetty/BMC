@@ -101,7 +101,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         switch (v.getId()) {
             case R.id.fab_plus:
                 Log.i("Open Add", "Button was clicked");
-                initiateAddPopupWindow();
+            //    initiateAddPopupWindow();
                 break;
             case R.id.profile_edit:
                 enableProfileEditText(true);
