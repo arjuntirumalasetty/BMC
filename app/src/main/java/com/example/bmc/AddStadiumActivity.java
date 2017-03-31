@@ -28,22 +28,23 @@ import handlers.StadiumHandler;
 public class AddStadiumActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener, View.OnClickListener,View.OnFocusChangeListener {
     ViewPager viewPager;
     int hour,min,hourFinal,minFinal;
-    @Bind(R.id.grouptimmingsfrom)
-    EditText groupTimmingsFrom;
-    @Bind(R.id.grouptimmingsto)
-    EditText groupTimmingsTo;
-    @Bind(R.id.individualtimmingsfrom)
+	//Edit text initialization
+	@Bind(R.id.stadiumName)
+    EditText stadiumName;
+	@Bind(R.id.sportName)
+    EditText sportName;
+	@Bind(R.id.noOfCourts)
+    EditText noOfCourts;
+	@Bind(R.id.individualtimmingsfrom)
     EditText individualTimmingsFrom;
     @Bind(R.id.individualtimmingsto)
     EditText individualTimmingsTo;
-    @Bind(R.id.stadiumName)
-            EditText stadiumName;
-    TextInputLayout stadiumn;
-    @Bind(R.id.sportName)
-            EditText sportName;
-    @Bind(R.id.noOfCourts)
-            EditText noOfCourts;
-    EditText activateTextView;
+	@Bind(R.id.grouptimmingsfrom)
+    EditText groupTimmingsFrom;
+    @Bind(R.id.grouptimmingsto)
+    EditText groupTimmingsTo;
+	EditText activateTextView;
+	// TextIputLayout initialization
     Button submitStadium;
     @Bind(R.id.stadium_name)
     TextInputLayout istadiumName;
@@ -68,20 +69,11 @@ public class AddStadiumActivity extends AppCompatActivity implements TimePickerD
         setContentView(R.layout.activity_add_stadium);
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        groupTimmingsFrom.setOnClickListener(this);
-        groupTimmingsTo.setOnClickListener(this);
-        individualTimmingsFrom.setOnClickListener(this);
-        individualTimmingsTo.setOnClickListener(this);
-        groupTimmingsFrom.setOnFocusChangeListener(this);
-        groupTimmingsTo.setOnFocusChangeListener(this);
-        individualTimmingsFrom.setOnFocusChangeListener(this);
-        individualTimmingsTo.setOnFocusChangeListener(this);
         stadiumName.setOnFocusChangeListener(this);
         sportName.setOnFocusChangeListener(this);
         noOfCourts.setOnFocusChangeListener(this);
         pinMyLocation_Btn.setOnClickListener(this);
-        stadiumn = (TextInputLayout) findViewById(R.id.stadium_name);
-        stadiumn.setOnFocusChangeListener(this);
+        istadiumName.setOnFocusChangeListener(this);
         baddStadium = (AppCompatButton) findViewById(R.id.add_stadium_btn);
         baddStadium.setOnClickListener(this);
     }
@@ -214,4 +206,5 @@ public class AddStadiumActivity extends AppCompatActivity implements TimePickerD
             }
 
     }
+	 
 }
