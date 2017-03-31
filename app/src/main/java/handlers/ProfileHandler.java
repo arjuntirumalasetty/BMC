@@ -1,5 +1,7 @@
 package handlers;
 
+import android.util.Log;
+
 import com.example.bmc.globalvariable.GlobalClass;
 
 import java.util.ArrayList;
@@ -65,6 +67,11 @@ public class ProfileHandler {
  * This method is used to call the service to persist the coachDetails
  */
     public static void persistProfileDetails(CoachDetails coachDetails, GlobalClass globalVariable) {
+        if(coachDetails != null) {
+            Log.e("coachdetails", "coach details>>>>>.."+coachDetails.getCoachEmail());
+        } else {
+            Log.e("coach details",">>>>>>>>>Coach Details are null");
+        }
         globalVariable.getCoach().setCoachDetails(coachDetails);
         RestCoachHandler.getInstance().updateCoachDetails(globalVariable.getCoach());
     }

@@ -108,7 +108,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.coach_profile_save:
                 createProfileDetails();
-                ProfileHandler.persistProfileDetails(coachDetails, globalVariable);
+                ProfileHandler.persistProfileDetails(this.coachDetails, globalVariable);
                 break;
         }
 
@@ -122,7 +122,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         coachDetails.setExperienceInMonths(Integer.parseInt(experienceInMonths.getText().toString()));
         coachDetails.setCoachPhoneNo(coachPhoneNo.getText().toString());
         coachDetails.setCoachEmail(coachEmail.getText().toString());
-        coachDetails = this.coachDetails;
+        this.coachDetails = coachDetails;
     }
 
     private void updateStadiumDetails() {
