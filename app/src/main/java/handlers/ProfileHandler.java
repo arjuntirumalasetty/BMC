@@ -35,7 +35,7 @@ public class ProfileHandler {
         stadiumDetailsList.add(stadiumDetails.getStadiumName());
         stadiumDetailsList.add(stadiumDetails.getNumberOfCourts());
         stadiumDetailsList.add(stadiumDetails.getSportName());
-        stadiumDetailsList.add(stadiumDetails.getTimings());
+      //  stadiumDetailsList.add(stadiumDetails.getTimings());
         stadiumDetailsMap.put(stadiumDetails.getStadiumName(),stadiumDetailsList);
         return stadiumDetailsMap;
     }

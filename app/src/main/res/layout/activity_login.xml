@@ -177,7 +177,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>&ndash;&gt;
-
         &lt;!&ndash;<android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_login"
             android:layout_width="fill_parent"
