@@ -188,8 +188,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             globalVariable.setCoach(existingCoach);
             globalVariable.setLoginEmail(existingCoach.getLoginEmail());
             globalVariable.setGoogleProfileName(existingCoach.getGoogleDisplayName());
-            callMainActivity();
+
         } else {
+            callMainActivity();
             //mStatusTextView.setText(R.string.signed_out);
 /*
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);

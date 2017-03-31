@@ -69,6 +69,14 @@ public class AddStadiumActivity extends AppCompatActivity implements TimePickerD
         setContentView(R.layout.activity_add_stadium);
         ButterKnife.bind(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        groupTimmingsFrom.setOnClickListener(this);
+        groupTimmingsTo.setOnClickListener(this);
+        individualTimmingsFrom.setOnClickListener(this);
+        individualTimmingsTo.setOnClickListener(this);
+        groupTimmingsFrom.setOnFocusChangeListener(this);
+        groupTimmingsTo.setOnFocusChangeListener(this);
+        individualTimmingsFrom.setOnFocusChangeListener(this);
+        individualTimmingsTo.setOnFocusChangeListener(this);
         stadiumName.setOnFocusChangeListener(this);
         sportName.setOnFocusChangeListener(this);
         noOfCourts.setOnFocusChangeListener(this);
@@ -111,28 +119,30 @@ public class AddStadiumActivity extends AppCompatActivity implements TimePickerD
     }
 
     private boolean finalValidate() {
-        if(null != stadiumName.getText() && !"".equals(stadiumName.getText())) {
+        Log.i("result ", String.valueOf((null != stadiumName.getText() && !"".equals(stadiumName.getText()))));
+        Log.i("Individual TImings",individualTimmingsTo.getText().toString());
+        if(null == stadiumName.getText().toString() || "".equals(stadiumName.getText().toString())) {
                 stadiumName.setError("stadium name should not blank");
                 return false;
-            }if(null != sportName.getText() && !"".equals(sportName.getText())) {
+            }if(null == sportName.getText().toString() || "".equals(sportName.getText().toString())) {
                 sportName.setError("sport name should not blank");
                 return false;
-            }if(null != noOfCourts.getText() && !"".equals(noOfCourts.getText())) {
+            }if(null == noOfCourts.getText().toString() || "".equals(noOfCourts.getText().toString())) {
                 noOfCourts.setError("No of sports should not blank");
-            return false;
-            }if(null != groupTimmingsFrom.getText() && !"".equals(groupTimmingsFrom.getText())){
+                 return false;
+            }if(null == groupTimmingsFrom.getText().toString() || "".equals(groupTimmingsFrom.getText().toString())){
                 groupTimmingsFrom.setError("time should not blank");
-            return false;
-            }
-                if(null != groupTimmingsTo.getText() && !"".equals(groupTimmingsTo.getText())) {
+                return false;
+                }
+            if(null == groupTimmingsTo.getText().toString() || "".equals(groupTimmingsTo.getText().toString())) {
                 groupTimmingsTo.setError("time should not blank");
                     return false;
-                }if(null != individualTimmingsFrom.getText() && !"".equals(individualTimmingsFrom.getText())) {
+            }if(null == individualTimmingsFrom.getText().toString() || "".equals(individualTimmingsFrom.getText().toString())) {
                 individualTimmingsFrom.setError("time should not blank");
                 return false;
-                }if(null != individualTimmingsTo.getText() && !"".equals(individualTimmingsTo.getText())) {
+                }if(null == individualTimmingsTo.getText().toString() || "".equals(individualTimmingsTo.getText().toString())) {
                 individualTimmingsTo.setError("time should not blank");
-            return false;
+                return false;
                 }
         return true;
     }
@@ -146,51 +156,51 @@ public class AddStadiumActivity extends AppCompatActivity implements TimePickerD
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
             switch (v.getId()){
-                case R.id.stadium_name:
+                case R.id.stadiumName:
                     if(hasFocus){
-                        if(null != stadiumName.getText() && !"".equals(stadiumName.getText())){
+                        if(null == stadiumName.getText() || "".equals(stadiumName.getText().toString())){
                             stadiumName.setError("stadium name should not blank");
                         }
                     }
                     break;
                 case R.id.sportName:
                     if(hasFocus){
-                        if(null != sportName.getText() && !"".equals(sportName.getText())){
+                        if(null == sportName.getText()  || "".equals(sportName.getText().toString())){
                             sportName.setError("sport name should not blank");
                         }
                     }
                     break;
                 case R.id.noOfCourts:
                     if(hasFocus){
-                        if(null != noOfCourts.getText() && !"".equals(noOfCourts.getText())){
+                        if(null == noOfCourts.getText() || "".equals(noOfCourts.getText().toString())){
                             noOfCourts.setError("No of sports should not blank");
                         }
                     }
                     break;
                 case R.id.grouptimmingsfrom:
                     if(hasFocus){
-                        if(null != groupTimmingsFrom.getText() && !"".equals(groupTimmingsFrom.getText())){
+                        if(null == groupTimmingsFrom.getText() || "".equals(groupTimmingsFrom.getText().toString())){
                             groupTimmingsFrom.setError("time should not blank");
                         }
                     }
                     break;
                 case R.id.grouptimmingsto:
                     if(hasFocus){
-                        if(null != groupTimmingsTo.getText() && !"".equals(groupTimmingsTo.getText())){
+                        if(null == groupTimmingsTo.getText() || "".equals(groupTimmingsTo.getText().toString())){
                             groupTimmingsTo.setError("time should not blank");
                         }
                     }
                     break;
                 case R.id.individualtimmingsfrom:
                     if(hasFocus){
-                        if(null != individualTimmingsFrom.getText() && !"".equals(individualTimmingsFrom.getText())){
+                        if(null == individualTimmingsFrom.getText() || "".equals(individualTimmingsFrom.getText().toString())){
                             individualTimmingsFrom.setError("time should not blank");
                         }
                     }
                     break;
                 case R.id.individualtimmingsto:
                     if(hasFocus){
-                        if(null != individualTimmingsTo.getText() && !"".equals(individualTimmingsTo.getText())){
+                        if(null == individualTimmingsTo.getText() || "".equals(individualTimmingsTo.getText().toString())){
                             individualTimmingsTo.setError("time should not blank");
                         }
                     }

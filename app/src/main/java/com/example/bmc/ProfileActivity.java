@@ -101,14 +101,14 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         switch (v.getId()) {
             case R.id.fab_plus:
                 Log.i("Open Add", "Button was clicked");
-            //    initiateAddPopupWindow();
+                openAddStadiumActivity();
                 break;
             case R.id.profile_edit:
                 enableProfileEditText(true);
                 break;
             case R.id.coach_profile_save:
                 createProfileDetails();
-                ProfileHandler.persistProfileDetails(this.coachDetails, globalVariable);
+                ProfileHandler.persistProfileDetails(coachDetails, globalVariable);
                 break;
         }
 
@@ -122,7 +122,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         coachDetails.setExperienceInMonths(Integer.parseInt(experienceInMonths.getText().toString()));
         coachDetails.setCoachPhoneNo(coachPhoneNo.getText().toString());
         coachDetails.setCoachEmail(coachEmail.getText().toString());
-        this.coachDetails = coachDetails;
+        coachDetails = this.coachDetails;
     }
 
     private void updateStadiumDetails() {
@@ -144,6 +144,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         fabClose = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_close);
         fabClockWise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_clock_wise);
         fabAntiClockWise = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_rotate_anticlock_wise);
+    }
+
+    private void openAddStadiumActivity() {
+        Intent stadiumDetailsIntent = new Intent(this, AddStadiumActivity.class);
+        startActivity(stadiumDetailsIntent);
+        overridePendingTransition(R.animator.activity_open_scale, R.animator.activity_close_translate);
     }
 
     @Override
