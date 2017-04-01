@@ -7,8 +7,5 @@
 /build
 /captures
 .externalNativeBuild
-app/src/main/java/com/example/bmc/ProfileActivity.java
-.idea/compiler.xml
-.idea/gradle.xml
-.idea/misc.xml
-projectFilesBackup/.idea/workspace.xml
+/app/google-services.JSON
+
