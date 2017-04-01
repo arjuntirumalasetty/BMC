@@ -12,7 +12,6 @@ import java.util.Calendar;
 import businessojects.Coach;
 import businessojects.CoachDetails;
 import businessojects.StadiumDetails;
-import Application;
 
 /**
  * Created by Arjun on 3/18/2017.
@@ -79,7 +78,7 @@ public class UICacheImpl implements UiCache{
     public CoachDetails getCoachDetails() throws IOException, ClassNotFoundException {
         CoachDetails coachDetails = null;
         if(coach==null){
-            readCaoch(Application.getContext());
+       //     readCaoch(Application.getContext());
         }else{
             coachDetails = coach.getCoachDetails();
         }
