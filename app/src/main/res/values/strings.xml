@@ -1,0 +1,93 @@
+<resources>
+    <string name="app_name">BMC</string>
+
+    <!-- Strings related to login -->
+    <string name="desc_app_icon">BMC Icon</string>
+    <string name="title_text">BMC Login</string>
+    <string name="signed_out">Signed out</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="disconnect">Disconnect</string>
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="Login" />
+    <string name="action_login">Login</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="loading">Loading…</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_sport">SportActivity</string>
+    <string name="PLACES_API_BASE">https://maps.googleapis.com/maps/api/place</string>
+    <string name="TYPE_AUTOCOMPLETE">/autocomplete</string>
+    <string name="google_maps_key">AIzaSyCUZvg-S2KMDw1GJZ0Tu3v3xr6WVUhMj8E</string>
+    <string name="title_activity_court">CourtActivity</string>
+    <string name="title_activity_book_court">BookCourt</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_stadium_details_activiy">StadiumDetailsActiviy</string>
+    <string name="title_activity_stadium_detail_actvity">StadiumDetailActvity</string>
+    <string-array name="years_of_experience">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="months_of_experience">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+    <string name="title_activity_stadium">StadiumActivity</string>
+</resources>

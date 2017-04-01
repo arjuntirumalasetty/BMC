@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_myProfile"
+            android:icon="@drawable/myprofile_nav"
+            android:title="My Profile" />
+        <item
+            android:id="@+id/nav_bookcourt"
+            android:icon="@drawable/booking_court_icon"
+            android:title="Book Court" />
+        <item
+            android:id="@+id/nav_earnings"
+            android:icon="@drawable/my_earnings_icon"
+            android:title="My earnings" />
+        <item
+            android:id="@+id/nav_mySchedule"
+            android:icon="@drawable/clock_icon"
+            android:title="Today Schedule" />
+        <item
+            android:id="@+id/nav_Event"
+            android:icon="@drawable/event_accept_icon"
+            android:title="Event" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/help_icon"
+                android:title="Help" />
+            <item
+                android:id="@+id/nav_logOut"
+                android:icon="@drawable/logout_icon"
+                android:title="Log Out" />
+        </menu>
+
+    </item>
+
+</menu>

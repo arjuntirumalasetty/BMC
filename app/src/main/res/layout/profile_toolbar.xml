@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00000000"
+    >
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/leftarrowarrows"
+        android:layout_marginLeft="20dp"/>
+
+    <com.rey.material.widget.Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:textSize="14dp"
+        android:alpha="0.25"
+        android:layout_gravity="center"
+        android:gravity="bottom"
+        android:textColor="@color/black"
+        android:id = "@+id/profile_edit"/>
+
+
+    <com.rey.material.widget.Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:alpha="0.25"
+        android:textSize="14dp"
+        android:layout_gravity="right"
+        android:layout_marginRight="20dp"
+        android:textColor="@color/black"
+        android:id = "@+id/coach_profile_save"/>
+
+
+
+
+</android.support.v7.widget.Toolbar>
