@@ -17,8 +17,9 @@ public class GlobalClass extends Application {
     private Coach coach;
     private String logout;
     private Context context;
+
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
         context = this;
         initCache();
@@ -31,10 +32,10 @@ public class GlobalClass extends Application {
         try {
             cache.readCaoch(this);
         } catch (IOException e) {
-            Log.e("Exception in intiCache",e.getMessage());
+            Log.e("Exception in intiCache", e.getMessage());
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
-            Log.e("Exception in intiCache",e.getMessage());
+            Log.e("Exception in intiCache", e.getMessage());
             e.printStackTrace();
         }
     }

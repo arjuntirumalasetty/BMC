@@ -28,11 +28,15 @@ import handlers.ProfileHandler;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
+ //   private static UICache uiCache = new UICache();
+    private ExpandableListView expandableListView;
     ExpandableListAdapter listAdapter;
+    private Button addButton;
     @Bind(R.id.fab_plus)
     FloatingActionButton fab_plus;
     android.widget.Button submitStadiumDetails;
     Animation fabOpen, fabClose, fabClockWise, fabAntiClockWise;
+    private boolean isFabOpen = false;
     @Bind(R.id.coach_name)
     EditText coachName;
     @Bind(R.id.age)
@@ -45,12 +49,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     EditText coachPhoneNo;
     @Bind(R.id.coach_email)
     EditText coachEmail;
-    GlobalClass globalVariable;
-    //   private static UICache uiCache = new UICache();
-    private ExpandableListView expandableListView;
-    private Button addButton;
-    private boolean isFabOpen = false;
     private CoachDetails coachDetails;
+    GlobalClass globalVariable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setContentView(R.layout.activity_profile);
-        //      stadiumDetailsList.add(uiCache.getStadiumDetails());
+  //      stadiumDetailsList.add(uiCache.getStadiumDetails());
         ProfileHandler.setStadiumList(stadiumDetailsList);
         expandableListView = (ExpandableListView) findViewById(R.id.stadium_list);
         ProfileHandler.fillData();
