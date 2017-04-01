@@ -1,8 +1,13 @@
 package com.example.bmc.globalvariable;
 
 import android.app.Application;
+import android.content.Context;
+import android.util.Log;
+
+import java.io.IOException;
 
 import businessojects.Coach;
+import cache.UICacheImpl;
 
 public class GlobalClass extends Application {
     
@@ -11,6 +16,33 @@ public class GlobalClass extends Application {
     private String googleProfileName;
     private Coach coach;
     private String logout;
+    private Context context;
+    @Override
+    public void onCreate(){
+        super.onCreate();
+        context = this;
+        initCache();
+    }
+
+
+    private void initCache() {
+        boolean isPresentInServer = false;
+        UICacheImpl cache = UICacheImpl.getInstance(this);
+        try {
+            cache.readCaoch(this);
+        } catch (IOException e) {
+            Log.e("Exception in intiCache",e.getMessage());
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            Log.e("Exception in intiCache",e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
 
     public String getLoginEmail() {
         return loginEmail;

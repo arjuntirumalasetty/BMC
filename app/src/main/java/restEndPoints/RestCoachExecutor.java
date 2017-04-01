@@ -15,7 +15,7 @@ class RestCoachExecutor extends AsyncTask<Void, Void, Coach> {
 
     private String endPoint;
 
-    private static final String restURI = "http://10.0.2.2:8080/coach/";
+    private static final String restURI = "http://192.168.1.3:8080/coach/";
 
     private Coach coach;
 

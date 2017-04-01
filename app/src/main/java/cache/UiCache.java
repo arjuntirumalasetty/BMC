@@ -11,9 +11,9 @@ import businessojects.StadiumDetails;
 
 public interface UiCache {
 
-    public CoachDetails getCoachDetails() throws IOException, ClassNotFoundException;
+    CoachDetails getCoachDetails() throws IOException, ClassNotFoundException;
 
-    public StadiumDetails getStadiumDetails();
+    StadiumDetails getStadiumDetails();
 
-    public String getUserEmail();
+    String getUserEmail();
 }

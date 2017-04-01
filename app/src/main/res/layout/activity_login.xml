@@ -37,14 +37,6 @@
             android:textSize="36sp" />
 
         <TextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/signed_out"
-            android:textColor="@android:color/white"
-            android:textSize="14sp" />
-
-        <TextView
             android:id="@+id/detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -72,42 +64,151 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="0dp"
         android:background="@color/blue_grey_900">
 
-        <com.google.android.gms.common.SignInButton
+       <!-- <com.google.android.gms.common.SignInButton
             android:id="@+id/btn_login_with_gmail"
+            android:layout_width="72dp"
+            android:layout_height="24dp"
+            android:layout_alignParent="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_above="@+id/sign_out_and_disconnect"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp" />-->
+            <!--android:layout_centerInParent="true"
+            android:visibility="visible"
+            tools:visibility="gone"-->
+
+
+        <!--<com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="72dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignTop="@+id/btn_login_with_gmail"
+            android:layout_toRightOf="@+id/btn_login_with_gmail"
+            android:layout_toEndOf="@+id/btn_login_with_gmail"
+            android:layout_marginLeft="109dp"
+            android:layout_marginStart="109dp" />-->
+
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/btn_login_with_facebook"
+            android:layout_width="178dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            />
+        <!--<LinearLayout
+            android:id="@+id/facebook_sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:visibility="visible"
-            tools:visibility="gone" />
-
-        <LinearLayout
-            android:id="@+id/sign_out_and_disconnect"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:orientation="horizontal"
+            android:paddingBottom="90dp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
-            android:visibility="gone"
+            android:paddingTop="10dp"
+            android:visibility="visible"
             tools:visibility="visible">
 
-            <Button
-                android:id="@+id/sign_out_button"
-                android:layout_width="0dp"
+
+
+            &lt;!&ndash;<com.google.android.gms.common.SignInButton
+                android:id="@+id/btn_login_with_gmail"
+                android:layout_width="172dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/sign_out"
-                android:theme="@style/ThemeOverlay.MyDarkButton" />
+                android:layout_marginLeft="5dp"
+                />&ndash;&gt;
 
-            <Button
+            &lt;!&ndash;<Button
                 android:id="@+id/disconnect_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/disconnect"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />&ndash;&gt;
+        </LinearLayout>-->
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btn_login_with_gmail"
+            android:layout_width="180dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/btn_login_with_facebook"
+            android:layout_centerHorizontal="true" />
+
+        <!--<LinearLayout
+            android:id="@+id/google_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:paddingBottom="45dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="10dp"
+            android:visibility="visible"
+            tools:visibility="visible">
+
+            &lt;!&ndash; <com.facebook.login.widget.LoginButton
+                android:id="@+id/login_button"
+                android:layout_width="172dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1" />&ndash;&gt;
+
+
+
+            &lt;!&ndash;<Button
+                android:id="@+id/disconnect_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/disconnect"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />&ndash;&gt;
+        </LinearLayout>
+-->
+        <LinearLayout
+            android:id="@+id/sign_out_and_disconnect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:visibility="visible"
+            tools:visibility="visible"
+            android:layout_below="@+id/btn_login_with_gmail"
+            >
+
+            <Button
+                android:id="@+id/btn_login_with_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/log_in"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            <Button
+                android:id="@+id/btn_sign_up_with_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/sign_up"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+            <!--<Button
+                android:id="@+id/disconnect_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/disconnect"
+                android:theme="@style/ThemeOverlay.MyDarkButton" />-->
         </LinearLayout>
 
     </RelativeLayout>

@@ -12,24 +12,20 @@ import java.util.Calendar;
 import businessojects.Coach;
 import businessojects.CoachDetails;
 import businessojects.StadiumDetails;
-
 /**
  * Created by Arjun on 3/18/2017.
  */
 
 public class UICacheImpl implements UiCache{
-    private static UICacheImpl instance = null;
     private static final String COACH_DATA = "COACH";
     private static final String PLAYER_DATA = "PLAYER";
+    public static boolean isCoachExistInCache = false;
+    private static UICacheImpl instance = null;
+    private static Coach coach;
     Calendar cal = Calendar.getInstance();
     int month;
     int year;
-
     private Context ctx;
-
-    private static Coach coach;
-
-    public static boolean isCoachExistInCache = false;
 
     private UICacheImpl(Context context){
         ctx = context;
@@ -46,6 +42,13 @@ public class UICacheImpl implements UiCache{
         return instance;
     }
 
+    public static Coach getCoach() {
+        return coach;
+    }
+
+    public static void setCoach(Coach coach) {
+        UICacheImpl.coach = coach;
+    }
 
     public void writeCoach(Context context, Object object) throws IOException {
         FileOutputStream fos = context.openFileOutput(COACH_DATA, Context.MODE_PRIVATE);
@@ -63,15 +66,6 @@ public class UICacheImpl implements UiCache{
         if(coach!= null){
             isCoachExistInCache = true;
         }
-    }
-
-    public static Coach getCoach() {
-        return coach;
-    }
-
-
-    public static void setCoach(Coach coach) {
-        UICacheImpl.coach = coach;
     }
 
     @Override
