@@ -7,7 +7,10 @@
     <string name="signed_out">Signed out</string>
     <string name="sign_out">Sign Out</string>
     <string name="disconnect">Disconnect</string>
-
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="facebook_app_id">1668653306769300</string>
+    <string name="fb_login_protocol_scheme">fb1668653306769300</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="action_sign_in">Sign in or register</string>
