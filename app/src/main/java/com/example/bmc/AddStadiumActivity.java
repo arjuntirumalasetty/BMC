@@ -125,31 +125,56 @@ public class AddStadiumActivity extends AppCompatActivity implements TimePickerD
             stadiumName.setError("stadium name should not blank");
             return false;
         }
-        else if (null == sportName.getText().toString() || "".equals(sportName.getText().toString())) {
+        if (null == sportName.getText().toString() || "".equals(sportName.getText().toString())) {
             sportName.setError("sport name should not blank");
             return false;
         }
-        else if (null == noOfCourts.getText().toString() || "".equals(noOfCourts.getText().toString())) {
+         if (null == noOfCourts.getText().toString() || "".equals(noOfCourts.getText().toString())) {
             noOfCourts.setError("No of sports should not blank");
             return false;
         }
-        else if (null == groupTimmingsFrom.getText().toString() || "".equals(groupTimmingsFrom.getText().toString())) {
+        if (null == groupTimmingsFrom.getText().toString() || "".equals(groupTimmingsFrom.getText().toString())) {
             groupTimmingsFrom.setError("time should not blank");
             return false;
         }
-        else if (null == groupTimmingsTo.getText().toString() || "".equals(groupTimmingsTo.getText().toString())) {
+        if (null == groupTimmingsTo.getText().toString() || "".equals(groupTimmingsTo.getText().toString())) {
             groupTimmingsTo.setError("time should not blank");
             return false;
         }
-        else if (null == individualTimmingsFrom.getText().toString() || "".equals(individualTimmingsFrom.getText().toString())) {
+        if (null == individualTimmingsFrom.getText().toString() || "".equals(individualTimmingsFrom.getText().toString())) {
             individualTimmingsFrom.setError("time should not blank");
             return false;
         }
-        else if (null == individualTimmingsTo.getText().toString() || "".equals(individualTimmingsTo.getText().toString())) {
+        if (null == individualTimmingsTo.getText().toString() || "".equals(individualTimmingsTo.getText().toString())) {
             Log.i("check coming", ">>>>>>>>");
             individualTimmingsTo.setError("time should not blank");
             return false;
         }
+
+        Log.i("Individual TImings",individualTimmingsTo.getText().toString());
+        if(null == stadiumName.getText().toString() || "".equals(stadiumName.getText().toString())) {
+                stadiumName.setError("stadium name should not blank");
+                return false;
+            }if(null == sportName.getText().toString() || "".equals(sportName.getText().toString())) {
+                sportName.setError("sport name should not blank");
+                return false;
+            }if(null == noOfCourts.getText().toString() || "".equals(noOfCourts.getText().toString())) {
+                noOfCourts.setError("No of sports should not blank");
+                 return false;
+            }if(null == groupTimmingsFrom.getText().toString() || "".equals(groupTimmingsFrom.getText().toString())){
+                groupTimmingsFrom.setError("time should not blank");
+                return false;
+                }
+            if(null == groupTimmingsTo.getText().toString() || "".equals(groupTimmingsTo.getText().toString())) {
+                groupTimmingsTo.setError("time should not blank");
+                    return false;
+            }if(null == individualTimmingsFrom.getText().toString() || "".equals(individualTimmingsFrom.getText().toString())) {
+                individualTimmingsFrom.setError("time should not blank");
+                return false;
+                }if(null == individualTimmingsTo.getText().toString() || "".equals(individualTimmingsTo.getText().toString())) {
+                individualTimmingsTo.setError("time should not blank");
+                return false;
+                }
         return true;
     }
 
