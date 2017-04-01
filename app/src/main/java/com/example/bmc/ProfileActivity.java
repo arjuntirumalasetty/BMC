@@ -24,12 +24,11 @@ import businessojects.CoachDetails;
 import businessojects.StadiumDetails;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import cache.UICache;
 import handlers.ProfileHandler;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
-    private static UICache uiCache = new UICache();
+  //  private static UICache uiCache = new UICache();
     private ExpandableListView expandableListView;
     ExpandableListAdapter listAdapter;
     private Button addButton;
@@ -61,7 +60,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setContentView(R.layout.activity_profile);
-        stadiumDetailsList.add(uiCache.getStadiumDetails());
+    //    stadiumDetailsList.add(uiCache.getStadiumDetails());
         ProfileHandler.setStadiumList(stadiumDetailsList);
         expandableListView = (ExpandableListView) findViewById(R.id.stadium_list);
         ProfileHandler.fillData();

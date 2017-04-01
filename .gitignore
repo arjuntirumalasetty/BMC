@@ -7,4 +7,5 @@
 /build
 /captures
 .externalNativeBuild
-app/src/main/java/com/example/bmc/ProfileActivity.java
+/app/google-services.JSON
+

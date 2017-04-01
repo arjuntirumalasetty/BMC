@@ -12,7 +12,7 @@ import java.util.Calendar;
 import businessojects.Coach;
 import businessojects.CoachDetails;
 import businessojects.StadiumDetails;
-import viewholder.Application;
+import Application;
 
 /**
  * Created by Arjun on 3/18/2017.
