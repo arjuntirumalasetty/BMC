@@ -96,13 +96,13 @@
             android:layout_marginStart="109dp" />-->
 
 
-        <com.facebook.login.widget.LoginButton
+        <!--<com.facebook.login.widget.LoginButton
             android:id="@+id/btn_login_with_facebook"
             android:layout_width="178dp"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            />
+            />-->
         <!--<LinearLayout
             android:id="@+id/facebook_sign_in"
             android:layout_width="wrap_content"

@@ -19,7 +19,7 @@ public class GlobalClass extends Application {
     private String googleProfileName;
     private Coach coach;
     private String logout;
-    private Context context;
+    private static Context context;
     SharedPreferences sharedPreferences;
     private static final String REG_USER = "reg";
     @Override
@@ -49,7 +49,7 @@ public class GlobalClass extends Application {
         }
     }
 
-    public Context getContext() {
+    public static Context getContext() {
         return context;
     }
 

@@ -1,10 +1,12 @@
 package businessojects;
 
+import java.io.Serializable;
+
 /**
  * Created by Arjun on 3/29/2017.
  */
 
-public class CoachDetails {
+public class CoachDetails implements Serializable {
     private String coachName;
     private int  age;
     private int experienceInYears;

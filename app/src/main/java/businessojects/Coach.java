@@ -2,11 +2,14 @@ package businessojects;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.io.Serializable;
+
 /**
  * Created by dgup27 on 3/15/2017.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Coach{
+public class Coach implements Serializable{
 
     private String id;
     private CoachDetails coachDetails;

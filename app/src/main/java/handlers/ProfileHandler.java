@@ -4,13 +4,16 @@ import android.util.Log;
 
 import com.example.bmc.globalvariable.GlobalClass;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import businessojects.Coach;
 import businessojects.CoachDetails;
 import businessojects.StadiumDetails;
+import cache.UiCache;
 import restEndPoints.RestCoachHandler;
 
 /**
@@ -66,13 +69,20 @@ public class ProfileHandler {
 /*
  * This method is used to call the service to persist the coachDetails
  */
-    public static void persistProfileDetails(CoachDetails coachDetails, GlobalClass globalVariable) {
+    public static void persistProfileDetails(CoachDetails coachDetails, GlobalClass globalVariable, UiCache uiCache) throws IOException {
         if(coachDetails != null) {
             Log.e("coachdetails", "coach details>>>>>.."+coachDetails.getCoachEmail());
         } else {
             Log.e("coach details",">>>>>>>>>Coach Details are null");
         }
+        uiCache.upDateCoachDetails(coachDetails);
         globalVariable.getCoach().setCoachDetails(coachDetails);
         RestCoachHandler.getInstance().updateCoachDetails(globalVariable.getCoach());
+    }
+
+    public static CoachDetails findCoachDetails(UiCache uiCache) throws IOException, ClassNotFoundException {
+
+        return uiCache.getCoachDetails();
+
     }
 }

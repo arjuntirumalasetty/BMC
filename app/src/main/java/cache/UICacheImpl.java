@@ -2,6 +2,8 @@ package cache;
 
 import android.content.Context;
 
+import com.example.bmc.globalvariable.GlobalClass;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -42,7 +44,7 @@ public class UICacheImpl implements UiCache{
         return instance;
     }
 
-    public static Coach getCoach() {
+    public Coach getCoach() {
         return coach;
     }
 
@@ -56,6 +58,15 @@ public class UICacheImpl implements UiCache{
         oos.writeObject(object);
         oos.close();
         fos.close();
+    }
+
+    @Override
+    public void upDateCoachDetails(CoachDetails coachDetails) throws IOException {
+        if(coach== null){
+            coach = new Coach();
+        }
+        coach.setCoachDetails(coachDetails);
+        writeCoach(GlobalClass.getContext(),coach);
     }
 
     public void readCaoch(Context context) throws IOException,

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.io.IOException;
 
+import businessojects.Coach;
 import businessojects.CoachDetails;
 import businessojects.StadiumDetails;
 
@@ -19,7 +20,11 @@ public interface UiCache {
 
     String getUserEmail();
 
+    Coach getCoach();
+
     void readCaoch(Context context) throws IOException, ClassNotFoundException;
 
     void writeCoach(Context context, Object object) throws IOException;
+
+    void upDateCoachDetails(CoachDetails coachDetails) throws IOException;
 }

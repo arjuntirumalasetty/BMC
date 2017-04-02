@@ -19,6 +19,7 @@ import com.rey.material.widget.TextView;
 
 import org.springframework.util.StringUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,11 +27,13 @@ import businessojects.CoachDetails;
 import businessojects.StadiumDetails;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import cache.UICacheImpl;
+import cache.UiCache;
 import handlers.ProfileHandler;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener, View.OnFocusChangeListener {
 
- //   private static UICache uiCache = new UICache();
+    private UiCache uiCache = UICacheImpl.getInstance(this);
     private ExpandableListView expandableListView;
     ExpandableListAdapter listAdapter;
     private Button addButton;
@@ -57,34 +60,72 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         List<StadiumDetails> stadiumDetailsList = new ArrayList<StadiumDetails>();
-        super.onCreate(savedInstanceState);
-        globalVariable = (GlobalClass) getApplicationContext();
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setContentView(R.layout.activity_profile);
-  //      stadiumDetailsList.add(uiCache.getStadiumDetails());
-        ProfileHandler.setStadiumList(stadiumDetailsList);
-        expandableListView = (ExpandableListView) findViewById(R.id.stadium_list);
-        ProfileHandler.fillData();
-        listAdapter = new adapters.ExpandableListAdapter(this, ProfileHandler.getStadiumNames(), ProfileHandler.getStadiumDetailsMap());
-        ButterKnife.bind(this);
-        expandableListView.setAdapter(listAdapter);
-        initialiseFabFloatingFunction();
-        enableProfileEditText(false);
-        fab_plus.setOnClickListener(this);
-        Button editButton = (Button) findViewById(R.id.profile_edit);
-        Button profileSaveButton = (Button) findViewById(R.id.coach_profile_save);
-        editButton.setOnClickListener(this);
-        profileSaveButton.setOnClickListener(this);
-        coachName.setOnFocusChangeListener(this);
-        age.setOnFocusChangeListener(this);
-        experienceInYears.setOnFocusChangeListener(this);
-        experienceInMonths.setOnFocusChangeListener(this);
-        coachPhoneNo.setOnFocusChangeListener(this);
-        coachEmail.setOnFocusChangeListener(this);
-        profileSaveButton.setOnClickListener(this);
+        try {
+            super.onCreate(savedInstanceState);
+            globalVariable = (GlobalClass) getApplicationContext();
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            setContentView(R.layout.activity_profile);
+            ProfileHandler.setStadiumList(stadiumDetailsList);
+            ButterKnife.bind(this);
+            CoachDetails existingCoachDetails = ProfileHandler.findCoachDetails(uiCache);
+            if(existingCoachDetails!=null){
+                addContentToView(existingCoachDetails);
+            }
+            //    ProfileHandler.fillData();
+            if(null != ProfileHandler.getStadiumNames()&& null != ProfileHandler.getStadiumDetailsMap()){
+                expandableListView = (ExpandableListView) findViewById(R.id.stadium_list);
+                listAdapter = new adapters.ExpandableListAdapter(this, ProfileHandler.getStadiumNames(), ProfileHandler.getStadiumDetailsMap());
+                expandableListView.setAdapter(listAdapter);
+            }
+            initialiseFabFloatingFunction();
+            enableProfileEditText(false);
+            fab_plus.setOnClickListener(this);
+            Button editButton = (Button) findViewById(R.id.profile_edit);
+            Button profileSaveButton = (Button) findViewById(R.id.coach_profile_save);
+            editButton.setOnClickListener(this);
+            profileSaveButton.setOnClickListener(this);
+            coachName.setOnFocusChangeListener(this);
+            age.setOnFocusChangeListener(this);
+            experienceInYears.setOnFocusChangeListener(this);
+            experienceInMonths.setOnFocusChangeListener(this);
+            coachPhoneNo.setOnFocusChangeListener(this);
+            coachEmail.setOnFocusChangeListener(this);
+            profileSaveButton.setOnClickListener(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
+
+
+    private void addContentToView(CoachDetails coachDetails) {
+        try{
+
+            if(StringUtils.hasText(coachDetails.getCoachName())){
+                coachName.setText(coachDetails.getCoachName());
+            }
+            if(StringUtils.hasText(String.valueOf(coachDetails.getAge()))){
+                age.setText(coachDetails.getAge()+"");
+            }
+            if(StringUtils.hasText(String.valueOf(coachDetails.getExperienceInYears()))){
+                experienceInYears.setText(coachDetails.getExperienceInYears()+"");
+            }
+            if(StringUtils.hasText(String.valueOf(coachDetails.getExperienceInMonths()))){
+                experienceInMonths.setText(coachDetails.getExperienceInMonths()+"");
+            }
+            if(StringUtils.hasText(String.valueOf(coachDetails.getCoachPhoneNo()))){
+                coachPhoneNo.setText(coachDetails.getCoachPhoneNo()+"");
+            }
+            if(StringUtils.hasText(coachDetails.getCoachEmail())){
+                coachEmail.setText(coachDetails.getCoachEmail());
+            }
+        }catch (Exception e){
+            Log.i("Exe in addContentView",e.getMessage());
+        }
+    }
     private void enableProfileEditText(boolean enable) {
         coachName.setEnabled(enable);
         age.setEnabled(enable);
@@ -107,7 +148,11 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.coach_profile_save:
                 createProfileDetails();
-                ProfileHandler.persistProfileDetails(coachDetails, globalVariable);
+                try {
+                    ProfileHandler.persistProfileDetails(coachDetails, globalVariable,uiCache);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
         }
 

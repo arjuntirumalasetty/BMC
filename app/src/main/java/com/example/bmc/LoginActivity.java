@@ -47,37 +47,37 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    try{
-        cache = UICacheImpl.getInstance((GlobalClass)getApplicationContext());
+        try{
+            cache = UICacheImpl.getInstance((GlobalClass)getApplicationContext());
 
      /*   FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);*/
 
-        setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
+            setContentView(R.layout.activity_login);
+            ButterKnife.bind(this);
 
-        findViewById(R.id.btn_login_with_gmail).setOnClickListener(this);
-        //findViewById(R.id.nav_logOut).setOnClickListener(this);
+            findViewById(R.id.btn_login_with_gmail).setOnClickListener(this);
+            //findViewById(R.id.nav_logOut).setOnClickListener(this);
 
-        // Configure sign-in to request the user's ID, email address, and basic
-        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        // Build a GoogleApiClient with access to the Google Sign-In API and the
-        // options specified by gso.
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
+            // Configure sign-in to request the user's ID, email address, and basic
+            // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestEmail()
+                    .build();
+            // Build a GoogleApiClient with access to the Google Sign-In API and the
+            // options specified by gso.
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
+                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                    .build();
 
-        SignInButton signInButton = (SignInButton) findViewById(R.id.btn_login_with_gmail);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
-        sharedPreferences = getApplicationContext().getSharedPreferences(REG_USER, Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-    }catch (Exception e){
-        Log.e("LoginActivity",e.getMessage());
-    }
+            SignInButton signInButton = (SignInButton) findViewById(R.id.btn_login_with_gmail);
+            signInButton.setSize(SignInButton.SIZE_STANDARD);
+            sharedPreferences = getApplicationContext().getSharedPreferences(REG_USER, Context.MODE_PRIVATE);
+            editor = sharedPreferences.edit();
+        }catch (Exception e){
+            Log.e("LoginActivity",e.getMessage());
+        }
     }
 
     private void callMainActivity() {
@@ -129,21 +129,21 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         try {
-        Log.i("requestCode", "requestCode>>>>>>>>>>>>>>>>>."+requestCode);
-        if (requestCode == REQUEST_SIGNUP) {
-            if (resultCode == RESULT_OK) {
+            Log.i("requestCode", "requestCode>>>>>>>>>>>>>>>>>."+requestCode);
+            if (requestCode == REQUEST_SIGNUP) {
+                if (resultCode == RESULT_OK) {
 
-                // TODO: Implement successful signup logic here
-                // By default we just finish the Activity and log them in automatically
-                this.finish();
+                    // TODO: Implement successful signup logic here
+                    // By default we just finish the Activity and log them in automatically
+                    this.finish();
+                }
             }
-        }
 
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+            if (requestCode == RC_SIGN_IN) {
+                GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
                 handleSignInResult(result);
-        }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
