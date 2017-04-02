@@ -61,10 +61,12 @@ public class UICacheImpl implements UiCache{
     public void readCaoch(Context context) throws IOException,
             ClassNotFoundException {
         FileInputStream fis = context.openFileInput(COACH_DATA);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        coach = (Coach) ois.readObject();
-        if(coach!= null){
-            isCoachExistInCache = true;
+        if(fis !=null){
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            coach = (Coach) ois.readObject();
+            if(coach!= null){
+                isCoachExistInCache = true;
+            }
         }
     }
 

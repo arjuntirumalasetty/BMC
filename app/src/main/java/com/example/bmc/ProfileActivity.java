@@ -17,6 +17,8 @@ import com.example.bmc.globalvariable.GlobalClass;
 import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
 
+import org.springframework.util.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,8 +82,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         experienceInMonths.setOnFocusChangeListener(this);
         coachPhoneNo.setOnFocusChangeListener(this);
         coachEmail.setOnFocusChangeListener(this);
-        Button profileSave = (Button) findViewById(R.id.coach_profile_save);
-        profileSave.setOnClickListener(this);
+        profileSaveButton.setOnClickListener(this);
     }
 
     private void enableProfileEditText(boolean enable) {
@@ -120,7 +121,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         coachDetails.setExperienceInMonths(Integer.parseInt(experienceInMonths.getText().toString()));
         coachDetails.setCoachPhoneNo(coachPhoneNo.getText().toString());
         coachDetails.setCoachEmail(coachEmail.getText().toString());
-        coachDetails = this.coachDetails;
+         this.coachDetails = coachDetails;
     }
 
     private void updateStadiumDetails() {
@@ -133,7 +134,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             sd.setSportName(sportName.getText().toString());
             sd.setNumberOfCourts(noOfCourts.getText().toString());
         } catch (Exception e) {
-
+            Log.e("Exception update Sadium",e.getMessage());
         }
     }
 
@@ -164,37 +165,37 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     break;
                 case R.id.coach_phone_no:
                     if (hasFocus) {
-                        if (null == coachPhoneNo.getText().toString() || "" == coachPhoneNo.getText().toString()) {
+                        if (!StringUtils.hasText(coachPhoneNo.getText().toString())) {
                             coachPhoneNo.setError("Phone no should not blank");
                         }
                     }
                     break;
                 case R.id.experience_months:
                     if (hasFocus) {
-                        if (null == coachPhoneNo.getText().toString() || "" == coachPhoneNo.getText().toString()) {
+                        if (!StringUtils.hasText(coachPhoneNo.getText().toString())) {
                             coachPhoneNo.setError("No of months should not blank");
                         }
                     }
                 case R.id.experience_years:
                     if (hasFocus) {
-                        if (null == experienceInYears.getText().toString() || "" == experienceInYears.getText().toString()) {
+                        if (!StringUtils.hasText(experienceInYears.getText().toString())) {
                             experienceInYears.setError("No of years should not blank");
                         }
                     }
                     break;
                 case R.id.coach_email:
                     if (hasFocus) {
-                        if (null == coachEmail.getText().toString() || "" == coachEmail.getText().toString()) {
+                        if (!StringUtils.hasText(coachEmail.getText().toString())) {
                             coachEmail.setError("Email should not blank");
                         }
-                        if (null != coachEmail.getText().toString() && !coachEmail.getText().toString().contains("@") || !(coachEmail.getText().toString().contains(".com") || coachEmail.getText().toString().contains(".COM"))) {
+                        if (StringUtils.hasText(coachEmail.getText().toString()) && !coachEmail.getText().toString().contains("@") || !(coachEmail.getText().toString().contains(".com") || coachEmail.getText().toString().contains(".COM"))) {
                             coachEmail.setError("Email is incorrect");
                         }
                     }
                     break;
             }
         } catch (Exception e) {
-            Log.e("profile validator", e.getStackTrace().toString());
+            Log.e("profile validator", e.getMessage());
         }
     }
 }

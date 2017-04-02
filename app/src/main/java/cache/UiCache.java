@@ -1,5 +1,7 @@
 package cache;
 
+import android.content.Context;
+
 import java.io.IOException;
 
 import businessojects.CoachDetails;
@@ -16,4 +18,8 @@ public interface UiCache {
     StadiumDetails getStadiumDetails();
 
     String getUserEmail();
+
+    void readCaoch(Context context) throws IOException, ClassNotFoundException;
+
+    void writeCoach(Context context, Object object) throws IOException;
 }

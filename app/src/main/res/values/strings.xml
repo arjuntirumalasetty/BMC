@@ -93,6 +93,5 @@
         <item>12</item>
     </string-array>
     <string name="title_activity_stadium">StadiumActivity</string>
-    <string name="log_in">number</string>
-    <string name="sign_up">signup</string>
+    <string name="email_id">EMAIL</string>
 </resources>

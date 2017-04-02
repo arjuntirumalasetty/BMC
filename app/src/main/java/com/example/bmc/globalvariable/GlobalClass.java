@@ -2,7 +2,10 @@ package com.example.bmc.globalvariable;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
+
+import com.example.bmc.R;
 
 import java.io.IOException;
 
@@ -17,7 +20,8 @@ public class GlobalClass extends Application {
     private Coach coach;
     private String logout;
     private Context context;
-
+    SharedPreferences sharedPreferences;
+    private static final String REG_USER = "reg";
     @Override
     public void onCreate() {
         super.onCreate();
@@ -30,7 +34,12 @@ public class GlobalClass extends Application {
         boolean isPresentInServer = false;
         UICacheImpl cache = UICacheImpl.getInstance(this);
         try {
-            cache.readCaoch(this);
+            sharedPreferences = getApplicationContext().getSharedPreferences(REG_USER,Context.MODE_PRIVATE);
+            String userEmailKey = getResources().getString(R.string.email_id);
+            String userEmail = sharedPreferences.getString(getString(R.string.email_id),userEmailKey);
+            if(userEmail!= null && !userEmail.equals(userEmailKey)){
+                cache.readCaoch(this);
+            }
         } catch (IOException e) {
             Log.e("Exception in intiCache", e.getMessage());
             e.printStackTrace();
