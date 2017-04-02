@@ -93,8 +93,5 @@
         <item>12</item>
     </string-array>
     <string name="title_activity_stadium">StadiumActivity</string>
-<<<<<<< HEAD
     <string name="email_id">EMAIL</string>
-=======
->>>>>>> af463d707bb78c89b622eca20fe86328b19ee789
 </resources>
